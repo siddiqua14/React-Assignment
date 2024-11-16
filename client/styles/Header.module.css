@@ -1,0 +1,55 @@
+/* components/Header.module.css */
+
+/* =================================
+   header
+================================= */
+.headerContainer {
+    margin: 0 auto 10px auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.backLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #3784d6;
+    font-size: 0.875rem;
+    transition: opacity 0.3s;
+}
+
+.backLink:hover {
+    opacity: 0.8;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* =================================
+   Share-button
+================================= */
+.btnSecondary {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.btnSecondary:hover {
+    background: #f8f8f8;
+}
+
+/* Custom share modal styles */

@@ -1,0 +1,258 @@
+/* components/Header.module.css */
+
+/* =================================
+   header
+================================= */
+.headerContainer {
+    margin: 0 auto 10px auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.backLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #3784d6;
+    font-size: 0.875rem;
+    transition: opacity 0.3s;
+}
+
+.backLink:hover {
+    opacity: 0.8;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* =================================
+   Share-button
+================================= */
+.btnSecondary {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.btnSecondary:hover {
+    background: #f8f8f8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Move all modal-related CSS here */
+.customShareOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 80px;
+    z-index: 1000;
+}
+
+
+.customShareModal {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    animation: slideDown 0.3s ease;
+}
+
+/* Modal header styles */
+.customModalHeader {
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.modalTitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(3, 3, 3);
+}
+
+.customCloseBtn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #4685f2;
+}
+
+
+.propertyPreview{
+    padding: 12px;
+    display: flex;
+    gap: 12px;
+    border-bottom: 2px solid #eee;
+    background-color: #ecf0f1e3;
+    border-radius: 8px;
+    margin: 12px;
+}
+.previewImage{
+    width: 100px;
+    height: 100px;
+    border-radius: 8px 0 0 8px;
+    object-fit: cover;
+}
+
+.previewInfo h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #202020;
+}
+
+.previewInfo p {
+    color: #555;
+    font-size: 15px;
+}
+
+.shareOptions {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-auto-flow: column;
+    gap: 5px;
+    justify-items: center;
+    margin-bottom: 3px;
+}
+
+.shareOption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    padding: 8px;
+    border-radius: 20px;
+    transition: background-color 0.2s;
+}
+
+.shareOption:hover {
+    background: #ecf0f1e3;
+}
+
+.shareIcon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.shareIcon img {
+    width: 40px;
+    height: 40px;
+}
+
+.shareLabel {
+    font-size: 12px;
+    text-align: center;
+    color: #33454b;
+}
+
+.copyLink {
+    margin: 0 16px 16px;
+    padding: 12px;
+    border: 1px solid #ddddddde;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.linkText {
+    font-size: 14px;
+    color: #5b7c88;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.copyBtn {
+    background: #5b7c88;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.copyBtn:hover {
+    background: #3c545e;
+}
+
+.copied {
+    background: #4CAF50 !important;
+    color: white;
+}
+/* =================================
+   Save-button
+================================= */
+.save {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.save:hover {
+    background: #f8f8f8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.heartIcon{
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: #000;
+    stroke-width: 2;
+    transition: all 0.3s ease;
+}
+
+.save.active .heartIcon {
+    fill: #ff4b4b;
+    stroke: #ff4b4b;
+    animation: heartPop 0.3s ease;
+}
+
+
+.save.active .heartIcon {
+    fill: #ff4b4b; /* Change this to your desired color */
+}

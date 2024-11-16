@@ -1,0 +1,77 @@
+/* NavModal.module.css */
+.overlay {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+}
+/* Modal overlay */
+.nav-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 250;
+    display: none;
+}
+
+/* Modal content */
+.nav-modal {
+    position: relative;
+    width: 80%;
+    max-width: 500px;
+    margin: 100px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+.title {
+    color: rgb(3, 3, 3); /* Change this to your desired color */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Show the modal overlay when active */
+.nav-modal-overlay.active {
+    display: block;
+}
+/* Labels */
+.nav-modal label {
+    display: block;
+    font-size: 14px;
+    margin: 10px 0 5px;
+}
+.closeBtn {
+    border: none;
+    background-color: transparent;
+    font-size: 24px;
+}
+
+.warningMessage {
+    margin-bottom: 20px;
+    padding-top: 5px;
+    border-radius: 8px;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+.saveBtn {
+    margin-top: 10px;
+}
