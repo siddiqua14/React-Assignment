@@ -1,0 +1,24 @@
+{
+  "title": "six-season",
+  "description": "A Luxury place to stay",
+  "guestCount": 2,
+  "bedroomCount": 1,
+  "bathroomCount": 1,
+  "amenities": [
+    "WiFi",
+    "Air Conditioning"
+  ],
+  "host": "John Doe",
+  "address": "123 Street, City, Country",
+  "latitude": 40.7128,
+  "longitude": -74.006,
+  "rooms": [
+    {
+      "roomSlug": "room1",
+      "roomTitle": "Room 1",
+      "bedroomCount": 1
+    }
+  ],
+  "id": "1731483695565",
+  "slug": "six-season"
+}

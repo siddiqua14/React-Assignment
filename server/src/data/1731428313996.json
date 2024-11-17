@@ -1,0 +1,26 @@
+{
+  "title": "Updated Hotel Title",
+  "description": "A great place to stay",
+  "guestCount": 4,
+  "bedroomCount": 2,
+  "bathroomCount": 1,
+  "amenities": [
+    "WiFi",
+    "TV"
+  ],
+  "host": "Test Host",
+  "address": "123 Test St",
+  "latitude": 12.34567,
+  "longitude": 98.76543,
+  "rooms": [
+    {
+      "hotelSlug": "test-hotel",
+      "roomSlug": "room-1",
+      "roomImage": "image-url",
+      "roomTitle": "Room 1",
+      "bedroomCount": 1
+    }
+  ],
+  "id": "1731428313996",
+  "slug": "updated-hotel-title"
+}

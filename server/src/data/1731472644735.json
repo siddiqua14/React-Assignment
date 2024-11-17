@@ -1,0 +1,33 @@
+{
+  "title": "Queen",
+  "description": "A Luxury place to stay",
+  "guestCount": 5,
+  "bedroomCount": 2,
+  "bathroomCount": 2,
+  "amenities": [
+    "WiFi",
+    "Air Conditioning"
+  ],
+  "host": "John Doe",
+  "address": "123 Street, City, Country",
+  "latitude": 40.7128,
+  "longitude": -74.006,
+  "rooms": [
+    {
+      "hotelSlug": "queen-hotel",
+      "roomSlug": "room1",
+      "roomImage": "",
+      "roomTitle": "Room 1",
+      "bedroomCount": 1
+    },
+    {
+      "hotelSlug": "queen-hotel",
+      "roomSlug": "room2",
+      "roomImage": "",
+      "roomTitle": "Room 2",
+      "bedroomCount": 2
+    }
+  ],
+  "id": "1731472644735",
+  "slug": "queen"
+}

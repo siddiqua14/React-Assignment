@@ -1,0 +1,31 @@
+{
+  "title": "Updated Hotel Title",
+  "description": "Updated description",
+  "guestCount": 6,
+  "bedroomCount": 3,
+  "bathroomCount": 2,
+  "amenities": [
+    "WiFi",
+    "Air Conditioning",
+    "Pool"
+  ],
+  "host": "Jane Doe",
+  "address": "456 New Street, City, Country",
+  "latitude": 41.1234,
+  "longitude": -75.1234,
+  "rooms": [
+    {
+      "hotelSlug": "updated-hotel",
+      "roomSlug": "updated-room1",
+      "roomImage": "",
+      "roomTitle": "Updated Room 1",
+      "bedroomCount": 1
+    }
+  ],
+  "id": "1731426519587",
+  "slug": "updated-hotel-title",
+  "images": [
+    "http://localhost:5000/uploads/1731426519587.png",
+    "http://localhost:5000/uploads/1731426519587.jpg"
+  ]
+}

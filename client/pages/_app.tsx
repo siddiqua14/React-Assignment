@@ -4,16 +4,25 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../styles/globals.css'; // Import global styles
 import '../styles/media.css'; // Import media queries for responsiveness
 import '../styles/Navbar.css'; // Import Navbar styles globally
-import '../styles/Header.module.css';
+import styles from '../styles/Header.module.css';
 
 
 import Navbar from '../components/Navbar'; // Import the Navbar component
 import Header from '../components/Header';
+import Gallery from '../components/GalleryContainer';
+import Tabs from '../components/Tabs';
+import Property from '../components/PropertyDetails';
 const MyApp = ({ Component, pageProps }: AppProps) => {
     return (
         <>
             <Navbar /> {/* Include the Navbar component here */}
-            <Header />
+            <main className={styles.mainContent}>
+                <Header />
+                <Gallery />
+                <Tabs/>
+                <Property/>
+            </main>
+           
             <Component {...pageProps} />
         </>
     );

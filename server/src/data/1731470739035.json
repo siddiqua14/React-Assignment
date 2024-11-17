@@ -1,0 +1,32 @@
+{
+  "title": "King Hotel",
+  "description": "A Luxury place to stay",
+  "guestCount": 5,
+  "bedroomCount": 2,
+  "bathroomCount": 2,
+  "amenities": [
+    "WiFi",
+    "Air Conditioning"
+  ],
+  "host": "John Doe",
+  "address": "123 Street, City, Country",
+  "latitude": 40.7128,
+  "longitude": -74.006,
+  "rooms": [
+    {
+      "hotelSlug": "king-hotel",
+      "roomSlug": "room1",
+      "roomImage": [
+        "http://localhost:5000/uploads/rooms/1731470739035-room1-1731472326205.png"
+      ],
+      "roomTitle": "Room 1",
+      "bedroomCount": 1
+    }
+  ],
+  "id": "1731470739035",
+  "slug": "king-hotel",
+  "images": [
+    "http://localhost:5050/uploads/1731470739035.jpeg",
+    "http://localhost:5050/uploads/1731470739035.jpg"
+  ]
+}

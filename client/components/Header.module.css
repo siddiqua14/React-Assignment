@@ -1,6 +1,9 @@
 /* components/Header.module.css */
 
-/* =================================
+/*
+
+
+=================================
    header
 ================================= */
 .headerContainer {
@@ -255,4 +258,507 @@
 
 .save.active .heartIcon {
     fill: #ff4b4b; /* Change this to your desired color */
+}
+
+
+
+
+/* =================================
+   main-gallery
+================================= */
+
+.mainContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    position: relative;
+    /*  z-index: 1; Lower z-index to keep main content behind navbar */
+}
+
+.galleryContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.galleryGrid {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.mainImage {
+    grid-row: span 2;
+    position: relative;
+    height: 490px;
+}
+
+.mainImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Keeps the image within the container without distortion */
+}
+
+.thumbnailColumn {
+    display: grid;
+    gap: 5px;
+}
+
+.thumbnail {
+    height: 240px;
+    position: relative;
+    overflow: hidden;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Fills the container while maintaining the image's aspect ratio */
+}
+
+.imageContainer {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.imageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.imageContainer:hover img {
+    transform: scale(1.05);
+}
+
+.morePhotos {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.3s ease;
+}
+
+.morePhotos:hover {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.desktopMore {
+    display: block;
+}
+
+.mobileMore {
+    display: none;
+}
+
+.modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 10000;
+    /* Much higher than other elements */
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContent {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    height: calc(100vh - 120px);
+    /* Leave space for title and navigation */
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin: auto;
+}
+
+.close {
+    position: fixed;
+    /* Changed from absolute to fixed */
+    top: 15px;
+    left: 15px;
+    color: #4b99ff;
+    font-size: 34px;
+    cursor: pointer;
+    z-index: 10001;
+    background: none;
+    border: none;
+    padding: 8px;
+}
+
+.navBtn {
+    position: absolute; /* Change to absolute for positioning relative to modal */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust vertical alignment */
+    background: rgba(255, 255, 255, 0.7); /* Slightly more opaque for better visibility */
+    color: black; /* Change text color for contrast */
+    cursor: pointer;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%; /* Make it a perfect circle */
+    transition: background 0.3s, transform 0.3s; 
+}
+.navBtn:hover {
+    background: rgba(255, 255, 255, 1); /* Fully opaque on hover */
+    transform: translateY(-50%) scale(1.1); /* Slightly enlarge on hover */
+}
+.navBtn[disabled] {
+    background: rgba(0, 0, 0, 0.3); /* Darker background for disabled state */
+    cursor: not-allowed; /* Change cursor to indicate disabled */
+}
+
+
+/* Positioning for left and right buttons */
+.prev {
+    left: 10px; /* Position left button */
+}
+
+.next {
+    right: 10px; /* Position right button */
+}
+
+.galleryInfo {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.imageTitle {
+    font-size: 16px;
+    max-width: 80%;
+}
+
+.imageCount {
+    font-size: 14px;
+}
+/* =================================
+   Max-768
+================================= */
+@media (max-width: 768px) {
+   
+
+
+    .galleryGrid {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .mainImage {
+        grid-row: auto;
+        height: 300px;
+    }
+
+    .thumbnailColumn {
+        display: none;
+    }
+
+    .modalContent {
+        width: 95%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .modal img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+
+    }
+
+    .galleryInfo {
+        padding: 10px 15px;
+    }
+
+    .imageTitle {
+        font-size: 14px;
+    }
+
+    .desktopMore {
+        display: none;
+    }
+
+    .mobileMore {
+        display: block;
+    }
+    .propertyDetails {
+        grid-template-columns: 1fr;
+    }
+    .mapContainer {
+        min-height: 180px;
+    }
+    .infoRow {
+        width: 100%;
+        grid-template-columns: 20px 1fr auto; /* Maintains the same layout on mobile */
+    }
+
+
+}
+/* Responsive Design */
+@media (min-width: 768px) {
+    .contentWrapper {
+        flex-direction: row;
+    }
+    
+    .mapSection {
+        width: 40%;
+    }
+    
+    .locationsList {
+        width: 60%;
+    }
+}
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes heartPop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* styles/Tabs.module.css */
+.tabs {
+    margin: 0 auto;
+    padding: 1rem;
+    position: relative;
+    max-width: 1200px;
+    display: flex;
+    border-bottom: 1px solid #e8e0e0; /* Underline for active tab */
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tab:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Light hover effect */
+}
+
+.active {
+    font-weight: bold;
+    border-bottom: 2px solid #0070f3; /* Active tab underline */
+}
+
+.content {
+    margin: 0 auto;
+    
+    position: relative;
+    max-width: 1200px;
+}
+
+
+
+/* styles/PropertyDetails.module.css */
+.propertyDetails {
+    margin: 0 auto;
+    padding: 1rem;
+    position: relative;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.backLink {
+    color: #0070f3; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.listingTitle {
+    font-size: 24px;
+    margin-top: 10px;
+}
+.amenitiesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.amenity {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.ratingBadge {
+    background-color: #ffd700; /* Gold color for rating */
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.ratingText {
+    margin-top: 10px;
+}
+
+.propertyStats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columns */
+    grid-template-rows: repeat(2, auto);
+    /* 2 rows */
+    margin-bottom:15px;
+}
+
+.statItem {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Space between stats */
+    gap: var(--spacing-sm);
+}
+
+.title {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.explorerCard {
+    max-width: 800px;
+   
+}
+
+.contentWrapper {
+    display: flex;
+    gap: 20px;
+   
+}
+
+.mapSection {
+    flex: 1;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.mapContainer {
+    width: 100%;
+    height: 170px;
+}
+.mapContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.mapInfo {
+    padding: 10px;
+    background: #fff;
+}
+
+.mapInfo p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.mapLink {
+    color: #1a73e8;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.locationsList {
+    flex: 1;
+    margin-top: 10px; /* Space above locations list */
+}
+
+.locationItem {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    margin-bottom: 10px; 
+    gap: 12px;
+}
+
+.locationIcon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.locationDetails {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.locationName {
+    font-size: 16px;
+    color: #333;
+}
+
+.driveTime {
+    color: #666;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.seeMore {
+    color: #0070f3; /* Link color */
+    text-decoration: none;
+    display: block;
+    margin-top: 12px;
 }
