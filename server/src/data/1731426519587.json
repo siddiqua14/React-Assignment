@@ -25,7 +25,11 @@
   "id": "1731426519587",
   "slug": "updated-hotel-title",
   "images": [
-    "http://localhost:5000/uploads/1731426519587.png",
-    "http://localhost:5000/uploads/1731426519587.jpg"
+    "http://localhost:5000/uploads/hotels/1731426519587-1731931874864.jpg",
+    "http://localhost:5000/uploads/hotels/1731426519587-1731931874863.jpeg",
+    "http://localhost:5000/uploads/hotels/1731426519587-1731932043999.jpg",
+    "http://localhost:5000/uploads/hotels/1731426519587-1731932043998.jpeg",
+    "http://localhost:5000/uploads/hotels/1731426519587-1731932044000.png",
+    "http://localhost:5000/uploads/hotels/1731426519587-1731932044005.png"
   ]
 }

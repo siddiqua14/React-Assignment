@@ -2,22 +2,23 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 
-// Multer storage configuration
-
-const storage = multer.diskStorage({
+// Configure storage for hotel images
+const hotelImageStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-        const folder = req.params.roomSlug ? 'rooms' : '';
-        const destinationPath = path.join(__dirname, `../uploads/${folder}`);
+        // Define the destination folder for hotel images
+        const destinationPath = path.join(__dirname, '../../uploads/hotels');
+        
+        // Ensure the directory exists
         fs.mkdirSync(destinationPath, { recursive: true });
+        
         cb(null, destinationPath);
     },
     filename: (req, file, cb) => {
-        const hotelId = req.params.id || req.body.id;
-        const roomSlug = req.params.roomSlug;
+        const { id } = req.params;
         const extension = path.extname(file.originalname);
-        const filename = roomSlug ? `${hotelId}-${roomSlug}${extension}` : `${hotelId}${extension}`;
+        const filename = `${id}-${Date.now()}${extension}`;
         cb(null, filename);
     }
 });
-
-export const upload = multer({ storage, limits: { fileSize: 10 * 1024 * 1024 } });
+// Create multer upload instance for hotel images
+export const upload = multer({ storage: hotelImageStorage });

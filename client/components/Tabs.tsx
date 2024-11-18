@@ -30,8 +30,8 @@ const Tabs: React.FC = () => {
             </div>
             <div className={styles.content}>
                 {activeTab === 'Overview' && <div></div>}
-                {activeTab === 'Amenities' && <div>Amenities Content Here</div>}
-                {activeTab === 'Policies' && <div>Policies Content Here</div>}
+                {activeTab === 'Amenities' && <div></div>}
+                {activeTab === 'Policies' && <div></div>}
             </div>
         </div>
     );

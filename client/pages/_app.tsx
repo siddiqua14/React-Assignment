@@ -8,19 +8,22 @@ import styles from '../styles/Header.module.css';
 
 
 import Navbar from '../components/Navbar'; // Import the Navbar component
-import Header from '../components/Header';
+import Header from '../components/Headerold';
 import Gallery from '../components/GalleryContainer';
 import Tabs from '../components/Tabs';
-import Property from '../components/PropertyDetails';
+import Property from '../components/Propert';
 const MyApp = ({ Component, pageProps }: AppProps) => {
     return (
         <>
             <Navbar /> {/* Include the Navbar component here */}
             <main className={styles.mainContent}>
+                
+                {/* Include the Navbar component here
                 <Header />
                 <Gallery />
                 <Tabs/>
-                <Property/>
+                <Property/> */}
+               
             </main>
            
             <Component {...pageProps} />

@@ -572,7 +572,7 @@
 /* styles/Tabs.module.css */
 .tabs {
     margin: 0 auto;
-    padding: 1rem;
+    padding: 0.5rem;
     position: relative;
     max-width: 1200px;
     display: flex;
@@ -588,10 +588,12 @@
 .tab:hover {
     background-color: rgba(0, 0, 0, 0.1); /* Light hover effect */
 }
-
+.tab.active{
+    border-bottom: 2px solid #0070f3; /* Active tab underline */
+}
 .active {
     font-weight: bold;
-    border-bottom: 2px solid #0070f3; /* Active tab underline */
+    
 }
 
 .content {

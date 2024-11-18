@@ -1,81 +1,149 @@
 // components/PropertyDetails.tsx
-import React from 'react';
-import styles from './Header.module.css'; // Create this CSS module for styling
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faBed,
+    faBath,
+    faUsers,
+    faWifi,
+    faCar,
+    faTree,
+    faCutlery,
+    faSnowflake,
+    faSoap, // For Washer
+    faDrumstickBite, // For Barbecue grill
+    faSwimmingPool // For Pool
+} from "@fortawesome/free-solid-svg-icons"; // Import necessary icons
+import styles from "./Header.module.css"; // Ensure you have this CSS module for styling
 
-const PropertyDetails: React.FC = () => {
+interface PropertyDetailsProps {
+    title: string;
+    description: string;
+    guestCount: number;
+    bedroomCount: number;
+    bathroomCount: number;
+    amenities: string[];
+    address: string; // New prop for address
+    latitude: number; // New prop for latitude
+    longitude: number; // New prop for longitude
+}
+
+const PropertyDetails: React.FC<PropertyDetailsProps> = ({
+    title,
+    description,
+    guestCount,
+    bedroomCount,
+    bathroomCount,
+    amenities,
+    address, // Destructure new props
+    latitude, // Destructure new props
+    longitude, // Destructure new props
+}) => {
+    // Map of amenities to their corresponding Font Awesome icons
+    const amenityIcons: Record<string, JSX.Element> = {
+        WiFi: <FontAwesomeIcon icon={faWifi} />,
+        "Air Conditioning": <FontAwesomeIcon icon={faSnowflake} />,
+        Pool: <FontAwesomeIcon icon={faTree} />,
+        "Parking available": <FontAwesomeIcon icon={faCar} />,
+        "Outdoor Space": <FontAwesomeIcon icon={faTree} />,
+        Kitchen: <FontAwesomeIcon icon={faCutlery} />,
+    };
+
     return (
         <div className={styles.propertyDetails}>
             <div className={styles.detailsLeft}>
-                <a href="#" className={styles.backLink}>Entire home</a>
+                <a href="#" className={styles.backLink}>
+                    Entire home
+                </a>
 
-                <h1 className={styles.listingTitle}>Juneau Vacation Home: Stunning View + Beach Access</h1>
+                <h1 className={styles.listingTitle}>{title}</h1>
+                <p>{description}</p>
+
                 <div className={styles.rating}>
                     <span className={styles.ratingBadge}>9.8</span>
                     <span>Exceptional</span>
                 </div>
                 <div className={styles.ratingText}>
-                    <a href="#reviews">See all 24 reviews  </a>
+                    <a href="#reviews">See all reviews</a>
                 </div>
 
                 <div className={styles.propertyStats}>
                     <div className={styles.statItem}>
-                        <i className="fa fa-bed" aria-hidden="true"></i>
-                        <span>2 bedrooms</span>
+                        <FontAwesomeIcon icon={faBed} />
+                        <span>{bedroomCount} bedrooms</span>
                     </div>
                     <div className={styles.statItem}>
-                        <i className="fa fa-bath" aria-hidden="true"></i>
-                        <span>1 bathroom</span>
+                        <FontAwesomeIcon icon={faBath} />
+                        <span>{bathroomCount} bathrooms</span>
                     </div>
                     <div className={styles.statItem}>
-                        <i className="fa fa-users" aria-hidden="true"></i>
-                        <span>Sleeps 4</span>
-                    </div>
-                    <div className={styles.statItem}>
-                        <i className="fa fa-home" aria-hidden="true"></i>
-                        <span>1155 sq ft</span>
+                        <FontAwesomeIcon icon={faUsers} />
+                        <span>Sleeps {guestCount}</span>
                     </div>
                 </div>
-
+                {/* Amenities Section */}
                 <h3 className={styles.title}>Popular amenities</h3>
                 <div className={styles.propertyStats}>
-                    <div className={styles.statItem}>
-                        <i className="fas fa-drumstick-bite"></i>
-                        <span>Barbecue grill</span>
-                    </div>
-
-                    <div className={styles.statItem}>
-                        <i className="fa-solid fa-soap"></i>
-                        <span>Washer</span>
-                    </div>
-                    <div className={styles.statItem}>
-                        <i className="fa fa-cutlery" aria-hidden="true"></i>
-                        <span>Kitchen</span>
-                    </div>
-                    <div className={styles.statItem}>
-                        <i className="fa fa-car" aria-hidden="true"></i>
-                        <span>Parking available</span>
-                    </div>
-                    <div className={styles.statItem}>
-                        <i className="fas fa-tree"></i>
-                        <span>Outdoor Space</span>
-                    </div>
-                    <div className={styles.statItem}>
-                        <i className="fa fa-wifi" aria-hidden="true"></i>
-                        <span>WiFi</span>
-                    </div>
-
+                    {amenities.length > 0 ? (
+                        amenities.map((amenity, index) => {
+                            let icon;
+                            switch (amenity) {
+                                case "Barbecue grill":
+                                    icon = <FontAwesomeIcon icon={faDrumstickBite} />;
+                                    break;
+                                case "Washer":
+                                    icon = <FontAwesomeIcon icon={faSoap} />;
+                                    break;
+                                case "Kitchen":
+                                    icon = <FontAwesomeIcon icon={faCutlery} />;
+                                    break;
+                                case "Parking available":
+                                    icon = <FontAwesomeIcon icon={faCar} />;
+                                    break;
+                                case "Outdoor Space":
+                                    icon = <FontAwesomeIcon icon={faTree} />;
+                                    break;
+                                case "WiFi":
+                                    icon = <FontAwesomeIcon icon={faWifi} />;
+                                    break;
+                                case "Air Conditioning":
+                                    icon = <FontAwesomeIcon icon={faSnowflake} />;
+                                    break;
+                                case "Pool":
+                                    icon = <FontAwesomeIcon icon={faSwimmingPool} />; // Use the swimming pool icon here
+                                    break;
+                                default:
+                                    icon = null; // Fallback if no matching amenity is found
+                            }
+                            return (
+                                <div key={index} className={styles.statItem}>
+                                    {icon}
+                                    <span>{amenity}</span>
+                                </div>
+                            );
+                        })
+                    ) : (
+                        <p>No amenities available.</p> // Fallback message if no amenities
+                    )}
                 </div>
 
+
+                {/* Display Address 
+                <h3 className={styles.title}>Location</h3>*/}
+                {/* Add address, latitude, and longitude to the explorerCard */}
                 <div className={styles.explorerCard}>
                     <h3 className={styles.title}>Explore the area</h3>
                     <div className={styles.contentWrapper}>
+                        {/* Map Section */}
                         <div className={styles.mapSection}>
                             <div className={styles.mapContainer}>
-                                <img src="./img/map.webp" alt="Map of Juneau, Alaska" />
+                                <img src="/img/map.webp" alt="Map of Juneau, Alaska" />
                             </div>
                             <div className={styles.mapInfo}>
-                                <p>Juneau, Alaska</p>
-                                <a href="#" className={styles.mapLink}>View in a map</a>
+                                {/* Display Address */}
+                                <p>{address}</p>
+                                {/* Display Coordinates */}
+                                <p>Latitude: {latitude}, Longitude: {longitude}</p>
                             </div>
                         </div>
 
@@ -102,6 +170,7 @@ const PropertyDetails: React.FC = () => {
                     </div>
                 </div>
 
+                {/* Additional sections can be added here */}
             </div>
         </div>
     );

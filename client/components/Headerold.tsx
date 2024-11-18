@@ -2,21 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import { FaShareAlt } from 'react-icons/fa'; // Importing share icon
 import styles from './Header.module.css'; // Importing CSS module
-import ShareModal from './Share'; 
+import ShareModal from './ShareModal'; 
 import Link from 'next/link';
 
 interface HeaderProps {
     title?: string;
-    propertyInfo?: {
-        title: string;
-        location: string;
-        rating: string;
-        imageUrl: string; // Ensure this path is correct
-        hotelId: string; // Add hotelId to property info
-    };
 }
 
-const Header: React.FC<HeaderProps> = ({ title, propertyInfo }) => {
+const Header: React.FC<HeaderProps> = ({ title }) => {
     const [isShareModalOpen, setIsShareModalOpen] = useState(false);
     const [isSaved, setIsSaved] = useState(false);
 
@@ -56,15 +49,14 @@ const Header: React.FC<HeaderProps> = ({ title, propertyInfo }) => {
                     </button>
 
                     {/* Share Modal */}
-                    {isShareModalOpen && propertyInfo && ( // Ensure propertyInfo is passed and not undefined
+                    {isShareModalOpen && (
                         <ShareModal
                             onClose={() => setIsShareModalOpen(false)}
                             propertyInfo={{
-                                title: propertyInfo.title,
-                                location: propertyInfo.location,
-                                rating: propertyInfo.rating,
-                                imageUrl: propertyInfo.imageUrl, // Ensure this path is correct
-                                hotelId: propertyInfo.hotelId // Pass hotelId for dynamic URL
+                                title: "Juneau Vacation Home: Stunning View + Beach Access",
+                                location: "United States of America",
+                                rating: "9.8/10",
+                                imageUrl: "/img/hotel.jpg" // Ensure this path is correct
                             }}
                         />
                     )}

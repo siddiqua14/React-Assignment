@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createHotel, getHotelByIdOrSlug, updateHotelById, uploadImages, uploadRoomImages } from '../controllers/hotel.controller';
+import { createHotel, getHotelByIdOrSlug, updateHotelById, getAllHotels, uploadImages, uploadRoomImages } from '../controllers/hotel.controller';
 import { upload } from '../middleware/hotel.middleware';
 import { createHotelValidation, updateHotelValidation, uploadRoomImagesValidation } from '../validations/hotel.validation';
 import { validationErrorHandler } from '../middleware/validationErrorHandler';
@@ -51,6 +51,9 @@ router.post(
 
 // Get hotel by ID or slug
 router.get('/hotel/:idOrSlug', getHotelByIdOrSlug);
+
+// Endpoint to fetch all hotels
+router.get('/hotels', getAllHotels)
 
 // Update hotel by ID
 router.put(

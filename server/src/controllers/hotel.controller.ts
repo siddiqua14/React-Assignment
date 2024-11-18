@@ -62,8 +62,44 @@ export const getHotelByIdOrSlug = (req: Request, res: Response): any => {
     if (hotel) {
         return res.status(200).json(hotel);
     }
-
     return res.status(404).json({ message: 'Hotel not found' });
+};
+
+
+// Path to the directory where the hotel data files are stored
+const hotelsDirPath = path.join(__dirname, '../data');
+
+// Controller function to get all hotels
+export const getAllHotels = (req: Request, res: Response): any => {
+    try {
+        // Read all file names from the 'data/' directory
+        const files = fs.readdirSync(hotelsDirPath);
+
+        // Initialize an array to store all hotels
+        const allHotels: any[] = [];
+
+        // Loop through each file and read its content
+        files.forEach((file) => {
+            const filePath = path.join(hotelsDirPath, file);
+
+            // Check if the file has a .json extension before reading
+            if (file.endsWith('.json')) {
+                try {
+                    const hotelData = fs.readFileSync(filePath, 'utf-8');
+                    const hotel = JSON.parse(hotelData);
+                    allHotels.push(hotel); // Add the hotel data to the array
+                } catch (error) {
+                    console.error(`Error reading file ${file}:`, error);
+                }
+            }
+        });
+
+        // Send back the combined hotel data
+        return res.status(200).json(allHotels);
+    } catch (error) {
+        console.error('Error reading hotel data:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
 export const updateHotelById = (req: Request, res: Response): any => {
@@ -88,7 +124,7 @@ export const updateHotelById = (req: Request, res: Response): any => {
 };
 
 export const uploadImages = (req: Request, res: Response): any => {
-    const { id } = req.body;
+    const { id } = req.params;  // Changed from req.body to req.params to match route
     const hotelPath = path.join(dataPath, `${id}.json`);
 
     if (!fs.existsSync(hotelPath)) {
@@ -96,13 +132,15 @@ export const uploadImages = (req: Request, res: Response): any => {
     }
 
     const hotelData = JSON.parse(fs.readFileSync(hotelPath, 'utf-8'));
-    const imagePaths = (req.files as Express.Multer.File[]).map((file) => `http://${req.get('host')}/uploads/${file.filename}`);
+    const imagePaths = (req.files as Express.Multer.File[]).map((file) => 
+        `http://${req.get('host')}/uploads/hotels/${file.filename}`  // Updated path to include 'hotels' directory
+    );
+    
     hotelData.images = hotelData.images ? [...hotelData.images, ...imagePaths] : imagePaths;
 
     fs.writeFileSync(hotelPath, JSON.stringify(hotelData, null, 2));
     res.status(200).json({ message: 'Images uploaded successfully', images: imagePaths });
 };
-
 // Controller for uploading room images
 export const uploadRoomImages = (req: Request, res: Response): any => {
     const hotelId = req.params.id;

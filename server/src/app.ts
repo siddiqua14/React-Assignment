@@ -2,13 +2,27 @@
 import express from 'express';
 import hotelRoutes from './routes/hotel.routes';
 import path from 'path';
-//export default app;
-
-
+import cors from "cors";
 const app = express();
+const corsOptions = {
+    origin: 'http://localhost:3000', // Adjust this to match your frontend URL
+    optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+//app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+
+app.get("/api/home", (req, res) => {
+    res.json({ message: "hello world" }); 
+});
+
 app.use('/api', hotelRoutes);
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+
+
 
 const port = 5000;
 app.listen(port, () => {
@@ -16,3 +30,4 @@ app.listen(port, () => {
 });
 
 export default app; // Export the app for use in tests
+
