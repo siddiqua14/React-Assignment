@@ -17,7 +17,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <>
             <Navbar /> {/* Include the Navbar component here */}
             <main className={styles.mainContent}>
-                
+            <Header />
+                <Gallery />
+                <Tabs/>
+                <Property/>
                 {/* Include the Navbar component here
                 <Header />
                 <Gallery />

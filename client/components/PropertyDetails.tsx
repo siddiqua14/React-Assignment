@@ -15,6 +15,7 @@ import {
     faSwimmingPool // For Pool
 } from "@fortawesome/free-solid-svg-icons"; // Import necessary icons
 import styles from "./Header.module.css"; // Ensure you have this CSS module for styling
+import BookingCard from './BookingCard';
 
 interface PropertyDetailsProps {
     title: string;
@@ -170,8 +171,9 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({
                     </div>
                 </div>
 
-                {/* Additional sections can be added here */}
+               
             </div>
+            <BookingCard />
         </div>
     );
 };

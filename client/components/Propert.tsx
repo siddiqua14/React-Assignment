@@ -1,7 +1,7 @@
 // components/PropertyDetails.tsx
 import React from 'react';
 import styles from './Header.module.css'; // Create this CSS module for styling
-
+import BookingCard from './BookingCard';
 const Property: React.FC = () => {
     return (
         <div className={styles.propertyDetails}>
@@ -101,8 +101,9 @@ const Property: React.FC = () => {
 
                     </div>
                 </div>
-
+               
             </div>
+            <BookingCard />
         </div>
     );
 };
