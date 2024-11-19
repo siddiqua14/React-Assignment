@@ -1,0 +1,30 @@
+{
+  "title": "Sunset",
+  "description": "A cozy inn with ocean views",
+  "guestCount": 4,
+  "bedroomCount": 2,
+  "bathroomCount": 1,
+  "amenities": [
+    "WiFi",
+    "Ocean View",
+    "Breakfast"
+  ],
+  "host": "Alice Smith",
+  "address": "456 Beach Road, Ocean City, Country",
+  "latitude": 34.0522,
+  "longitude": -118.2437,
+  "rooms": [
+    {
+      "roomSlug": "room1",
+      "roomTitle": "Ocean View Room",
+      "bedroomCount": 1
+    },
+    {
+      "roomSlug": "room2",
+      "roomTitle": "Standard Room",
+      "bedroomCount": 1
+    }
+  ],
+  "id": "1732008912996",
+  "slug": "sunset-inn"
+}

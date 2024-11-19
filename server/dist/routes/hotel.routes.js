@@ -21,9 +21,10 @@ const storage = multer_1.default.diskStorage({
             return cb(new Error('Hotel ID and Room Slug are required'), '');
         }
         // Define the destination folder for room images
-        const destinationPath = path_1.default.join(__dirname, `../uploads/rooms`);
-        // Ensure the directory exists
+        const destinationPath = path_1.default.resolve(__dirname, '../uploads/rooms');
+        // Ensure the directory exists, or create it if it doesn't
         fs_1.default.mkdirSync(destinationPath, { recursive: true });
+        // Use the defined folder
         cb(null, destinationPath);
     },
     filename: (req, file, cb) => {
@@ -31,9 +32,9 @@ const storage = multer_1.default.diskStorage({
         const roomSlug = req.params.roomSlug;
         const extension = path_1.default.extname(file.originalname);
         const originalName = path_1.default.basename(file.originalname, extension);
-        // Add roomSlug to the filename if it's a room image
+        // Add roomSlug to the filename for clarity
         const filename = `${hotelId}-${roomSlug}-${originalName}${extension}`;
-        cb(null, filename);
+        cb(null, filename); // Store with the specified filename
     }
 });
 // Hotel creation route with validation
@@ -43,6 +44,8 @@ hotel_controller_1.createHotel // Controller for creating hotel
 );
 // Get hotel by ID or slug
 router.get('/hotel/:idOrSlug', hotel_controller_1.getHotelByIdOrSlug);
+// Endpoint to fetch all hotels
+router.get('/hotels', hotel_controller_1.getAllHotels);
 // Update hotel by ID
 router.put('/hotel/:id', hotel_validation_1.updateHotelValidation, // Validation middleware for updates
 validationErrorHandler_1.validationErrorHandler, // Handle validation errors
@@ -50,15 +53,5 @@ hotel_controller_1.updateHotelById // Controller for updating hotel
 );
 // Upload hotel images
 router.post('/images/:id', hotel_middleware_1.upload.array('images', 10), hotel_controller_1.uploadImages);
-// Upload room images with validation
-router.post('/room/images/:id/:roomSlug', hotel_validation_1.uploadRoomImagesValidation, // Validation for room images
-validationErrorHandler_1.validationErrorHandler, // Handle validation errors
-hotel_middleware_1.upload.array('images', 10), // Upload middleware
-hotel_controller_1.uploadRoomImages // Controller for uploading room images
-);
-//router.post('/hotel', createHotel);
-//router.get('/hotel/:idOrSlug', getHotelByIdOrSlug);
-//router.put('/hotel/:id', updateHotelById);
-//router.post('/images/:id', upload.array('images', 10), uploadImages);
-//router.post('/images/:id/:roomSlug', upload.array('images', 10), uploadRoomImages);
+router.post('/images/:id/:roomSlug', hotel_middleware_1.upload.array('images', 10), hotel_controller_1.uploadRoomImages);
 exports.default = router;

@@ -1,0 +1,35 @@
+{
+  "title": "Mountain Retreat",
+  "description": "Escape to the mountains with luxurious amenities",
+  "guestCount": 6,
+  "bedroomCount": 3,
+  "bathroomCount": 2,
+  "amenities": [
+    "WiFi",
+    "Hot Tub",
+    "Fireplace"
+  ],
+  "host": "Bob Johnson",
+  "address": "789 Mountain Rd, Highland, Country",
+  "latitude": 36.7783,
+  "longitude": -119.4179,
+  "rooms": [
+    {
+      "roomSlug": "room1",
+      "roomTitle": "Master Suite",
+      "bedroomCount": 2
+    },
+    {
+      "roomSlug": "room2",
+      "roomTitle": "Guest Bedroom",
+      "bedroomCount": 1
+    },
+    {
+      "roomSlug": "room3",
+      "roomTitle": "Living Room Sofa Bed",
+      "bedroomCount": 1
+    }
+  ],
+  "id": "1732008927286",
+  "slug": "mountain-retreat"
+}

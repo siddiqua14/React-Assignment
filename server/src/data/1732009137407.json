@@ -1,0 +1,44 @@
+{
+  "title": "Green Forest Resort",
+  "description": "An eco-friendly resort surrounded by nature",
+  "guestCount": 5,
+  "bedroomCount": 2,
+  "bathroomCount": 1,
+  "amenities": [
+    "WiFi",
+    "Nature Trails",
+    "Eco-friendly",
+    "Solar Power",
+    "Sustainable Furniture",
+    "Organic Food",
+    "Yoga Center",
+    "Massage Services"
+  ],
+  "host": "David Lee",
+  "address": "202 Forest Lane, Green Valley, Country",
+  "latitude": 37.7749,
+  "longitude": -122.4194,
+  "rooms": [
+    {
+      "roomSlug": "room1",
+      "roomTitle": "Forest Cabin",
+      "bedroomCount": 1
+    },
+    {
+      "roomSlug": "room2",
+      "roomTitle": "Deluxe Room",
+      "bedroomCount": 1,
+      "roomImage": [
+        "http://localhost:5000/uploads/hotels/1732009137407-room2-pexels-photo-164595.jpeg"
+      ]
+    }
+  ],
+  "id": "1732009137407",
+  "slug": "green-forest-resort",
+  "images": [
+    "http://localhost:5000/uploads/hotels/1732009137407-1732009193789.jpeg",
+    "http://localhost:5000/uploads/hotels/1732009137407-1732009193790.jpg",
+    "http://localhost:5000/uploads/hotels/1732009137407-1732009193793.png",
+    "http://localhost:5000/uploads/hotels/1732009137407-1732009193806.png"
+  ]
+}

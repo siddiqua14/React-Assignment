@@ -17,7 +17,10 @@
     {
       "hotelSlug": "updated-hotel",
       "roomSlug": "updated-room1",
-      "roomImage": "",
+      "roomImage": [
+        "http://localhost:5000/uploads/rooms/1731426519587-1732006597288.png",
+        "http://localhost:5000/uploads/hotels/1731426519587-updated-room1-pexels-photo-164595.jpeg"
+      ],
       "roomTitle": "Updated Room 1",
       "bedroomCount": 1
     }

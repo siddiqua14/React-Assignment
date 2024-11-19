@@ -19,6 +19,9 @@
       "bedroomCount": 1
     }
   ],
-  "id": "1731483695565",
-  "slug": "six-season"
+  "id": "1732008795288",
+  "slug": "six-season",
+  "images": [
+    "http://localhost:5000/uploads/hotels/1732008795288-1732009472537.jpg"
+  ]
 }

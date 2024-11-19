@@ -29,5 +29,8 @@
     }
   ],
   "id": "1731472644735",
-  "slug": "queen"
+  "slug": "queen",
+  "images": [
+    "http://localhost:5000/uploads/hotels/1731472644735-1732009381746.png"
+  ]
 }

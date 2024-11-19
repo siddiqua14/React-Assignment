@@ -1,0 +1,25 @@
+{
+  "title": "City Plaza Hotel",
+  "description": "A modern hotel in the heart of the city",
+  "guestCount": 3,
+  "bedroomCount": 1,
+  "bathroomCount": 1,
+  "amenities": [
+    "WiFi",
+    "Gym",
+    "Pool"
+  ],
+  "host": "Emma Brown",
+  "address": "101 City Plaza, Downtown, Country",
+  "latitude": 40.7306,
+  "longitude": -73.9352,
+  "rooms": [
+    {
+      "roomSlug": "room1",
+      "roomTitle": "City View Room",
+      "bedroomCount": 1
+    }
+  ],
+  "id": "1732008942696",
+  "slug": "city-plaza-hotel"
+}

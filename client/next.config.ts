@@ -1,4 +1,5 @@
-import type { NextConfig } from 'next'
+// next.config.js
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -13,7 +14,16 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-}
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://localhost:5000/api/:path*', // Proxy to API
+      },
+    ];
+  },
+};
+
 
 export default nextConfig
 

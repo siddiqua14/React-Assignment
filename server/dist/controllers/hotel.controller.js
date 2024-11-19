@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.uploadRoomImages = exports.uploadImages = exports.updateHotelById = exports.getHotelByIdOrSlug = exports.createHotel = void 0;
+exports.uploadRoomImages = exports.uploadImages = exports.updateHotelById = exports.getAllHotels = exports.getHotelByIdOrSlug = exports.createHotel = void 0;
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const slugify_1 = __importDefault(require("slugify"));
@@ -59,6 +59,38 @@ const getHotelByIdOrSlug = (req, res) => {
     return res.status(404).json({ message: 'Hotel not found' });
 };
 exports.getHotelByIdOrSlug = getHotelByIdOrSlug;
+// Path to the directory where the hotel data files are stored
+const hotelsDirPath = path_1.default.join(__dirname, '../data');
+// Controller function to get all hotels
+// server/src/controllers/hotel.controller.ts
+const getAllHotels = (req, res) => {
+    try {
+        const files = fs_1.default.readdirSync(hotelsDirPath);
+        const allHotels = [];
+        files.forEach((file) => {
+            if (file.endsWith('.json')) {
+                try {
+                    const filePath = path_1.default.join(hotelsDirPath, file);
+                    const hotelData = fs_1.default.readFileSync(filePath, 'utf-8');
+                    const hotel = JSON.parse(hotelData);
+                    allHotels.push(hotel);
+                }
+                catch (error) {
+                    console.error(`Error reading file ${file}:`, error);
+                }
+            }
+        });
+        return res.status(200).json(allHotels);
+    }
+    catch (error) {
+        console.error('Error reading hotel data:', error);
+        return res.status(500).json({
+            message: 'Internal server error',
+            error: error instanceof Error ? error.message : 'Unknown error'
+        });
+    }
+};
+exports.getAllHotels = getAllHotels;
 const updateHotelById = (req, res) => {
     const { id } = req.params;
     const filePath = path_1.default.join(dataPath, `${id}.json`);
@@ -73,13 +105,14 @@ const updateHotelById = (req, res) => {
 };
 exports.updateHotelById = updateHotelById;
 const uploadImages = (req, res) => {
-    const { id } = req.body;
+    const { id } = req.params; // Changed from req.body to req.params to match route
     const hotelPath = path_1.default.join(dataPath, `${id}.json`);
     if (!fs_1.default.existsSync(hotelPath)) {
         return res.status(404).json({ message: 'Hotel not found' });
     }
     const hotelData = JSON.parse(fs_1.default.readFileSync(hotelPath, 'utf-8'));
-    const imagePaths = req.files.map((file) => `http://${req.get('host')}/uploads/${file.filename}`);
+    const imagePaths = req.files.map((file) => `http://${req.get('host')}/uploads/hotels/${file.filename}` // Updated path to include 'hotels' directory
+    );
     hotelData.images = hotelData.images ? [...hotelData.images, ...imagePaths] : imagePaths;
     fs_1.default.writeFileSync(hotelPath, JSON.stringify(hotelData, null, 2));
     res.status(200).json({ message: 'Images uploaded successfully', images: imagePaths });
@@ -101,16 +134,18 @@ const uploadRoomImages = (req, res) => {
     if (!room) {
         return res.status(404).json({ message: 'Room not found' });
     }
-    const imagePaths = req.files.map((file) => {
-        return `http://${req.get('host')}/uploads/rooms/${file.filename}`;
-    });
+    // Create the URLs for the uploaded images
+    const imagePaths = req.files.map((file) => `http://${req.get('host')}/uploads/rooms/${file.filename}` // Ensure the path is correct
+    );
+    // Add the new image paths to the room's images
     room.roomImage = room.roomImage ? [...room.roomImage, ...imagePaths] : imagePaths;
+    // Save the updated hotel data back to the JSON file
     try {
         fs_1.default.writeFileSync(hotelPath, JSON.stringify(hotelData, null, 2));
-        return res.status(200).json({ message: 'Room images uploaded successfully', images: imagePaths });
+        res.status(200).json({ message: 'Room images uploaded successfully', images: imagePaths });
     }
     catch (err) {
-        return res.status(500).json({ message: 'Internal server error' });
+        res.status(500).json({ message: 'Internal server error' });
     }
 };
 exports.uploadRoomImages = uploadRoomImages;

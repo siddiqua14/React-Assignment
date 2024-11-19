@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import slugify from 'slugify';
 import { Hotel } from '../models/hotel.types';
+import { validationResult } from 'express-validator';
 
 const dataPath = path.resolve(__dirname, '../data');
 // Helper to construct file path
@@ -70,35 +71,32 @@ export const getHotelByIdOrSlug = (req: Request, res: Response): any => {
 const hotelsDirPath = path.join(__dirname, '../data');
 
 // Controller function to get all hotels
+// server/src/controllers/hotel.controller.ts
 export const getAllHotels = (req: Request, res: Response): any => {
     try {
-        // Read all file names from the 'data/' directory
         const files = fs.readdirSync(hotelsDirPath);
+        const allHotels: Hotel[] = [];
 
-        // Initialize an array to store all hotels
-        const allHotels: any[] = [];
-
-        // Loop through each file and read its content
         files.forEach((file) => {
-            const filePath = path.join(hotelsDirPath, file);
-
-            // Check if the file has a .json extension before reading
             if (file.endsWith('.json')) {
                 try {
+                    const filePath = path.join(hotelsDirPath, file);
                     const hotelData = fs.readFileSync(filePath, 'utf-8');
                     const hotel = JSON.parse(hotelData);
-                    allHotels.push(hotel); // Add the hotel data to the array
+                    allHotels.push(hotel);
                 } catch (error) {
                     console.error(`Error reading file ${file}:`, error);
                 }
             }
         });
 
-        // Send back the combined hotel data
         return res.status(200).json(allHotels);
     } catch (error) {
         console.error('Error reading hotel data:', error);
-        return res.status(500).json({ message: 'Internal server error' });
+        return res.status(500).json({ 
+            message: 'Internal server error',
+            error: error instanceof Error ? error.message : 'Unknown error'
+        });
     }
 };
 
@@ -141,7 +139,6 @@ export const uploadImages = (req: Request, res: Response): any => {
     fs.writeFileSync(hotelPath, JSON.stringify(hotelData, null, 2));
     res.status(200).json({ message: 'Images uploaded successfully', images: imagePaths });
 };
-// Controller for uploading room images
 export const uploadRoomImages = (req: Request, res: Response): any => {
     const hotelId = req.params.id;
     const roomSlug = req.params.roomSlug;
@@ -161,9 +158,9 @@ export const uploadRoomImages = (req: Request, res: Response): any => {
         return res.status(404).json({ message: 'Room not found' });
     }
 
-    const imagePaths = (req.files as Express.Multer.File[]).map((file) => {
-        return `http://${req.get('host')}/uploads/rooms/${file.filename}`;
-    });
+    const imagePaths = (req.files as Express.Multer.File[]).map((file) => 
+        `http://${req.get('host')}/uploads/hotels/${file.filename}`  // Path for room images
+    );
 
     room.roomImage = room.roomImage ? [...room.roomImage, ...imagePaths] : imagePaths;
 
@@ -174,4 +171,6 @@ export const uploadRoomImages = (req: Request, res: Response): any => {
         return res.status(500).json({ message: 'Internal server error' });
     }
 };
+
+
 
