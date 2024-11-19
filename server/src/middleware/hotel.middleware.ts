@@ -33,7 +33,7 @@ const roomImageStorage = multer.diskStorage({
         }
 
         // Define the destination folder for room images under 'uploads/hotels'
-        const destinationPath = path.resolve(__dirname, '../uploads/rooms'); // Use same folder as hotel images
+        const destinationPath = path.resolve(__dirname, '../../uploads/rooms'); // Use same folder as hotel images
 
         // Ensure the directory exists, or create it if it doesn't
         fs.mkdirSync(destinationPath, { recursive: true });

@@ -25,10 +25,11 @@ export interface Hotel {
     }>;
 }
 
+
 const HotelCard = ({ hotel }: { hotel: Hotel }): JSX.Element => {
     return (
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <Link href={`/hotel/${hotel.slug || hotel.id}`}>
+            <Link href={`/hotel-details/${hotel.slug || hotel.id}/${hotel.id}`}>
                 <div className="bg-gray-800 rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     {/* Hotel Main Image */}
                     <div className="relative h-48 w-full">
@@ -73,7 +74,6 @@ const HotelCard = ({ hotel }: { hotel: Hotel }): JSX.Element => {
             </Link>
         </div>
     );
-
 };
 
 export default HotelCard;

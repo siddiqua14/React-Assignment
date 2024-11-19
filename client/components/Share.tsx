@@ -1,6 +1,6 @@
 // components/ShareModal.tsx
 import React from 'react';
-import styles from './Header.module.css'; // Importing styles
+import styles from '../components/css/Header.module.css'; // Importing styles
 import Image from 'next/image';
 
 interface ShareModalProps {

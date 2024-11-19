@@ -17,9 +17,16 @@
     {
       "roomSlug": "room1",
       "roomTitle": "City View Room",
-      "bedroomCount": 1
+      "bedroomCount": 1,
+      "roomImages": [
+        "http://localhost:5000/uploads/rooms/1732008942696-room1-room.jpeg"
+      ]
     }
   ],
   "id": "1732008942696",
-  "slug": "city-plaza-hotel"
+  "slug": "city-plaza-hotel",
+  "images": [
+    "http://localhost:5000/uploads/hotels/1732008942696-1732039504334.png",
+    "http://localhost:5000/uploads/hotels/1732008942696-1732039504342.jpg"
+  ]
 }

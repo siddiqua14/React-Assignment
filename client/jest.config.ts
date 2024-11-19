@@ -16,6 +16,15 @@ const customJestConfig = {
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest', // Use ts-jest for TypeScript files
   },
+  collectCoverage: true, // Enable coverage
+  coverageThreshold: {
+    global: {
+      statements: 70,
+      branches: 70,
+      functions: 70,
+      lines: 70,
+    },
+  },
 };
 
 export default createJestConfig(customJestConfig);

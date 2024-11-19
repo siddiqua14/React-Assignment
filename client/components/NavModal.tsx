@@ -1,6 +1,6 @@
 // components/NavModal.tsx
 import React, { useState } from 'react';
-import styles from './NavModal.module.css';
+import styles from '../components/css/NavModal.module.css';
 import { regionsWithCurrencies } from './constants'; // Importing regionsWithCurrencies
 import { FaExclamationTriangle } from 'react-icons/fa';
 // Type definitions

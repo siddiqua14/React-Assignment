@@ -1,8 +1,8 @@
 // components/Header.tsx
 import React, { useState, useEffect } from 'react';
 import { FaShareAlt } from 'react-icons/fa'; // Importing share icon
-import styles from './Header.module.css'; // Importing CSS module
-import ShareModal from './Share'; 
+import styles from '../components/css/Header.module.css'; // Importing CSS module
+import ShareModal from './Share';
 import Link from 'next/link';
 
 interface HeaderProps {
@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ title, propertyInfo }) => {
     const toggleSave = () => {
         const newSavedState = !isSaved;
         setIsSaved(newSavedState);
-        
+
         // Save state to localStorage
         localStorage.setItem('property-saved', newSavedState.toString());
     };
@@ -50,11 +50,11 @@ const Header: React.FC<HeaderProps> = ({ title, propertyInfo }) => {
                     <button
                         className={`${styles.btnSecondary}`}
                         onClick={() => setIsShareModalOpen(true)}
+                        data-testid="share-button"
                     >
                         <FaShareAlt />
                         <span className="desktop-only">Share</span>
                     </button>
-
                     {/* Share Modal */}
                     {isShareModalOpen && propertyInfo && ( // Ensure propertyInfo is passed and not undefined
                         <ShareModal

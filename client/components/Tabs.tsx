@@ -1,6 +1,6 @@
 // components/Tabs.tsx
 import React, { useState } from 'react';
-import styles from './Header.module.css'; // Create this CSS module for styling
+import styles from '../components/css/Header.module.css'; // Create this CSS module for styling
 
 const Tabs: React.FC = () => {
     const [activeTab, setActiveTab] = useState('Overview');

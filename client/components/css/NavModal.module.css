@@ -19,7 +19,7 @@
     max-width: 500px;
 }
 /* Modal overlay */
-.nav-modal-overlay {
+.navModalOverlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -33,7 +33,7 @@
 }
 
 /* Modal content */
-.nav-modal {
+.navModal {
     position: relative;
     width: 80%;
     max-width: 500px;
@@ -49,7 +49,7 @@
 }
 
 /* Show the modal overlay when active */
-.nav-modal-overlay.active {
+.navModalOverlay.active {
     display: block;
 }
 /* Labels */

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 import NavModal from './NavModal'; // Importing NavModal component
 import { regionsWithCurrencies } from './constants'; // Importing regionsWithCurrencies
-import styles from './Navbar.module.css'; // Assuming you're using CSS Modules
+import styles from '../components/css/Navbar.module.css'; // Assuming you're using CSS Modules
 
 const Navbar: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

@@ -14,7 +14,7 @@ import {
     faDrumstickBite, // For Barbecue grill
     faSwimmingPool // For Pool
 } from "@fortawesome/free-solid-svg-icons"; // Import necessary icons
-import styles from "./Header.module.css";
+import styles from "../components/css/Header.module.css";
 
 
 // Map of amenities to their corresponding Font Awesome icons

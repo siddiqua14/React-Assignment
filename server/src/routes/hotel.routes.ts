@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createHotel, getHotelByIdOrSlug, updateHotelById, getAllHotels, uploadImages, uploadRoomImages } from '../controllers/hotel.controller';
+import { createHotel, getHotelByIdOrSlug,getHotelBySlugAndId, updateHotelById, getAllHotels, uploadImages, uploadRoomImages } from '../controllers/hotel.controller';
 import { upload , roomUpload } from '../middleware/hotel.middleware';
 import { createHotelValidation, updateHotelValidation, uploadRoomImagesValidation } from '../validations/hotel.validation';
 import { validationErrorHandler } from '../middleware/validationErrorHandler';
@@ -23,17 +23,22 @@ router.post(
 router.get('/hotel/:idOrSlug', getHotelByIdOrSlug);
 
 // Endpoint to fetch all hotels
-router.get('/hotels', getAllHotels)
+router.get('/hotel-details', getAllHotels)
+// server.js or the file where your routes are defined
+// Update the route to match the new structure
+router.get('/hotel-details/:slug/:hotelId', getHotelBySlugAndId);
+
+
 
 // Update hotel by ID
 router.put(
     '/hotel/:id',
-    updateHotelValidation,  // Validation middleware for updates
-    validationErrorHandler,  // Handle validation errors
-    updateHotelById          // Controller for updating hotel
+    updateHotelValidation,  
+    validationErrorHandler,  
+    updateHotelById         
 );
 
-// Upload hotel images
+
 router.post('/images/:id', upload.array('images', 10), uploadImages);
 router.post('/images/:id/:roomSlug', roomUpload.array('images', 10), uploadRoomImages);
 

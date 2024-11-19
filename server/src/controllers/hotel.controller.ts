@@ -65,22 +65,43 @@ export const getHotelByIdOrSlug = (req: Request, res: Response): any => {
     }
     return res.status(404).json({ message: 'Hotel not found' });
 };
+// Updated function to handle both slug and hotelId
+export const getHotelBySlugAndId = (req: Request, res: Response): any => {
+    const { slug, hotelId } = req.params;
 
+    // Attempt to fetch hotel by numeric hotelId first
+    const filePath = getHotelFilePath(hotelId);
+    if (fs.existsSync(filePath)) {
+        try {
+            const hotelData = fs.readFileSync(filePath, 'utf-8');
+            const hotel = JSON.parse(hotelData);
+            return res.status(200).json(hotel);
+        } catch (error) {
+            console.error('Error reading hotel data by ID:', error);
+            return res.status(500).json({ message: 'Internal server error' });
+        }
+    }
 
-// Path to the directory where the hotel data files are stored
-const hotelsDirPath = path.join(__dirname, '../data');
+    // If no file was found by hotelId, attempt to fetch by slug
+    const hotel = getHotelBySlug(slug);
+    if (hotel) {
+        return res.status(200).json(hotel);
+    }
+
+    // If no hotel is found by either hotelId or slug
+    return res.status(404).json({ message: 'Hotel not found' });
+};
 
 // Controller function to get all hotels
-// server/src/controllers/hotel.controller.ts
 export const getAllHotels = (req: Request, res: Response): any => {
     try {
-        const files = fs.readdirSync(hotelsDirPath);
+        const files = fs.readdirSync(dataPath);
         const allHotels: Hotel[] = [];
 
         files.forEach((file) => {
             if (file.endsWith('.json')) {
                 try {
-                    const filePath = path.join(hotelsDirPath, file);
+                    const filePath = path.join(dataPath, file);
                     const hotelData = fs.readFileSync(filePath, 'utf-8');
                     const hotel = JSON.parse(hotelData);
                     allHotels.push(hotel);
@@ -139,37 +160,40 @@ export const uploadImages = (req: Request, res: Response): any => {
     fs.writeFileSync(hotelPath, JSON.stringify(hotelData, null, 2));
     res.status(200).json({ message: 'Images uploaded successfully', images: imagePaths });
 };
+
 export const uploadRoomImages = (req: Request, res: Response): any => {
-    const hotelId = req.params.id;
-    const roomSlug = req.params.roomSlug;
+    const { id: hotelId, roomSlug } = req.params; // Extract hotel ID and roomSlug from params
+    const hotelPath = path.join(dataPath, `${hotelId}.json`); // Path to hotel data JSON file
 
-    if (!hotelId || !roomSlug) {
-        return res.status(400).json({ message: 'Hotel ID and Room Slug are required' });
-    }
-
-    const hotelPath = path.join(__dirname, `../data/${hotelId}.json`);
+    // Check if hotel exists
     if (!fs.existsSync(hotelPath)) {
         return res.status(404).json({ message: 'Hotel not found' });
     }
 
-    const hotelData = JSON.parse(fs.readFileSync(hotelPath, 'utf-8'));
-    const room = hotelData.rooms.find((r: any) => r.roomSlug === roomSlug);
+    const hotelData = JSON.parse(fs.readFileSync(hotelPath, 'utf-8')); // Read hotel data
+    const room = hotelData.rooms.find((r: any) => r.roomSlug === roomSlug); // Find room by roomSlug
+
+    // Check if room exists
     if (!room) {
         return res.status(404).json({ message: 'Room not found' });
     }
 
-    const imagePaths = (req.files as Express.Multer.File[]).map((file) => 
-        `http://${req.get('host')}/uploads/hotels/${file.filename}`  // Path for room images
+    // Map uploaded files to their URL paths
+    const imagePaths = (req.files as Express.Multer.File[]).map((file) =>
+        `http://${req.get('host')}/uploads/rooms/${file.filename}`
     );
 
-    room.roomImage = room.roomImage ? [...room.roomImage, ...imagePaths] : imagePaths;
+    // Add new images to the room's existing images
+    room.roomImages = room.roomImages ? [...room.roomImages, ...imagePaths] : imagePaths;
 
-    try {
-        fs.writeFileSync(hotelPath, JSON.stringify(hotelData, null, 2));
-        return res.status(200).json({ message: 'Room images uploaded successfully', images: imagePaths });
-    } catch (err) {
-        return res.status(500).json({ message: 'Internal server error' });
-    }
+    // Save updated hotel data
+    fs.writeFileSync(hotelPath, JSON.stringify(hotelData, null, 2));
+
+    // Respond with success and uploaded images
+    res.status(200).json({
+        message: 'Room images uploaded successfully',
+        images: imagePaths,
+    });
 };
 
 

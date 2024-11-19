@@ -14,7 +14,7 @@ import {
     faDrumstickBite, // For Barbecue grill
     faSwimmingPool // For Pool
 } from "@fortawesome/free-solid-svg-icons"; // Import necessary icons
-import styles from "./Header.module.css"; // Ensure you have this CSS module for styling
+import styles from "../components/css/Header.module.css"; // Ensure you have this CSS module for styling
 import BookingCard from './BookingCard';
 
 interface PropertyDetailsProps {

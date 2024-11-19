@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './Header.module.css';
+import styles from '../components/css/Header.module.css';
 
 const BookingCard: React.FC = () => {
     const [adultsCount, setAdultsCount] = useState<number>(2);

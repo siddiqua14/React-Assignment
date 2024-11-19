@@ -8,10 +8,7 @@ import styles from '../styles/Header.module.css';
 
 
 import Navbar from '../components/Navbar'; // Import the Navbar component
-import Header from '../components/Headerold';
-import Gallery from '../components/GalleryContainer';
-import Tabs from '../components/Tabs';
-import Property from '../components/Propert';
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
     return (
         <>
@@ -23,7 +20,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                 <Gallery />
                 <Tabs/>
                 <Property/> */}
-               
             </main>
            
             <Component {...pageProps} />

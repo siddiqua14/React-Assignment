@@ -16,13 +16,15 @@
   "rooms": [
     {
       "hotelSlug": "updated-hotel",
-      "roomSlug": "updated-room1",
-      "roomImage": [
-        "http://localhost:5000/uploads/rooms/1731426519587-1732006597288.png",
-        "http://localhost:5000/uploads/hotels/1731426519587-updated-room1-pexels-photo-164595.jpeg"
-      ],
+      "roomSlug": "room1",
+      "roomImage": [],
       "roomTitle": "Updated Room 1",
-      "bedroomCount": 1
+      "bedroomCount": 1,
+      "roomImages": [
+        "http://localhost:5000/uploads/rooms/1731426519587-room1-room.jpeg",
+        "http://localhost:5000/uploads/rooms/1731426519587-room1-room2.jpg",
+        "http://localhost:5000/uploads/rooms/1731426519587-room1-room.jpeg"
+      ]
     }
   ],
   "id": "1731426519587",
