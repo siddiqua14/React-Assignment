@@ -17,7 +17,7 @@ const ShareModal: React.FC<ShareModalProps> = ({ onClose, propertyInfo }) => {
     const [copied, setCopied] = React.useState(false);
     
     // Construct the shareable URL based on hotel ID
-    const shareUrl = `http://localhost:3000/hotel/${propertyInfo.hotelId}`;
+    const shareUrl = `http://localhost:3000/hotel-details/${encodeURIComponent(propertyInfo.title.toLowerCase().replace(/\s+/g, '-'))}/${propertyInfo.hotelId}`;
 
     const handleCopyLink = async () => {
         try {
