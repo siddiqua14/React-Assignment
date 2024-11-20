@@ -26,7 +26,6 @@ const Index = (): JSX.Element => {
     <div className="bg-gray-800 min-h-screen flex items-center justify-center text-white">
       <div className="text-center p-8">
         <h1 className="text-4xl font-bold mb-4">Welcome to Our Website</h1>
-        <p className="text-xl mb-6">{message}</p>
         <button
           onClick={navigateToHotels}
           className="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg"

@@ -23,13 +23,20 @@ This project converts an initial HTML and CSS project into a server-side, compon
 ### Integration
 - The API is called from the Next.js frontend to dynamically retrieve and display hotel data based on the URL.
 
----
+### Backend Server (Node.js + Express)
+
+The backend server is built with Node.js and Express.js, providing APIs for seamless integration with the frontend. CORS is configured to allow secure communication between the backend and the frontend hosted at `http://localhost:3000`.
+
+- **CORS Integration**: Enables the frontend to securely connect to the backend.
+- **API Endpoint**: 
+  - **`GET /api/hotel-details/:slug/:hotelId`**: Fetches hotel details based on the provided hotel ID.
+
 
 ## Dynamic Hotel Details Page
 
 ### URL Structure
 - **Page URL**: `/hotel-details/{slug}/{hotel-id}`
-- **Example**: `http://localhost:8080/hotel-details/radisson-blu/76512`
+- **Example**: `http://localhost:3000/hotel-details/radisson-blue/1731426519587`
 
 ### Implementation Details
 1. **Dynamic Routing**: Captures `slug` and `hotel-id` from the URL using Next.js dynamic routing.

@@ -46,7 +46,7 @@ const HotelPage: React.FC<HotelPageProps> = ({ hotel, notFound }) => {
 
     return (
         <>
-            {/* Pass hotel info to Header */}
+            
             <Header
                 title={hotel.title}
                 propertyInfo={{
@@ -58,10 +58,9 @@ const HotelPage: React.FC<HotelPageProps> = ({ hotel, notFound }) => {
                 }}
             />
 
-            {/* Pass images directly to Gallery */}
             <Gallery images={hotel.images} title={hotel.title} />
             <Tabs />
-            {/* Pass hotel data as props to PropertyDetails */}
+           
             <PropertyDetails
                 title={hotel.title}
                 description={hotel.description}
@@ -70,30 +69,30 @@ const HotelPage: React.FC<HotelPageProps> = ({ hotel, notFound }) => {
                 bathroomCount={hotel.bathroomCount}
                 amenities={hotel.amenities}
                 address={hotel.address}         
-                latitude={hotel.latitude}       // Pass latitude prop
-                longitude={hotel.longitude}     // Pass longitude prop
+                latitude={hotel.latitude}      
+                longitude={hotel.longitude}     
             />
             <HotelDetails
                 title={hotel.title}
                 guestCount={hotel.guestCount}
                 bedroomCount={hotel.bedroomCount}
                 bathroomCount={hotel.bathroomCount}
-                bedrooms={bedrooms} // Pass the created bedrooms array
+                bedrooms={bedrooms} 
                 amenities={hotel.amenities}
                 description={hotel.description}
-                propertyInfo={"Example Property Info"} // Replace with actual property info
-                homeHighlights={"Example Home Highlights"} // Replace with actual highlights
-                kitchen={"Example Kitchen Info"} // Replace with actual kitchen details
-                general={"General information about the property."} // Replace with actual general info
-                faq={"Frequently asked questions."} // Replace with actual FAQ details
-                parking={"Parking information."} // Replace with actual parking details
-                locationHighlights={"Location highlights."} // Replace with actual location highlights
-                thingsToDo={"Things to do nearby."} // Replace with actual things to do
-                localFare={"Local dining options."} // Replace with actual local fare options
-                airportInfo={"Airport information."} // Replace with actual airport info
-                policies={["No smoking", "No pets allowed"]} // Example policies array
-                propertyManagerName={"Evolve"} // Example manager name
-                propertyManagerLogo={"/path/to/logo.png"} // Example logo path
+                propertyInfo={"Example Property Info"} 
+                homeHighlights={"Example Home Highlights"} 
+                kitchen={"Example Kitchen Info"} 
+                general={"General information about the property."} 
+                faq={"Frequently asked questions."} 
+                parking={"Parking information."} 
+                locationHighlights={"Location highlights."} 
+                thingsToDo={"Things to do nearby."} 
+                localFare={"Local dining options."} 
+                airportInfo={"Airport information."} 
+                policies={["No smoking", "No pets allowed"]} 
+                propertyManagerName={"Evolve"} 
+                propertyManagerLogo={"/path/to/logo.png"} 
             />
 
         </>

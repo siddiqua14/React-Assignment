@@ -24,9 +24,9 @@ interface PropertyDetailsProps {
     bedroomCount: number;
     bathroomCount: number;
     amenities: string[];
-    address: string; // New prop for address
-    latitude: number; // New prop for latitude
-    longitude: number; // New prop for longitude
+    address: string; 
+    latitude: number; 
+    longitude: number; 
 }
 
 const PropertyDetails: React.FC<PropertyDetailsProps> = ({
@@ -36,9 +36,9 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({
     bedroomCount,
     bathroomCount,
     amenities,
-    address, // Destructure new props
-    latitude, // Destructure new props
-    longitude, // Destructure new props
+    address,
+    latitude, 
+    longitude, 
 }) => {
     // Map of amenities to their corresponding Font Awesome icons
     const amenityIcons: Record<string, JSX.Element> = {
@@ -128,10 +128,6 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({
                     )}
                 </div>
 
-
-                {/* Display Address 
-                <h3 className={styles.title}>Location</h3>*/}
-                {/* Add address, latitude, and longitude to the explorerCard */}
                 <div className={styles.explorerCard}>
                     <h3 className={styles.title}>Explore the area</h3>
                     <div className={styles.contentWrapper}>

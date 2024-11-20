@@ -14,14 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-/*
-app.get("/api/home", (req, res) => {
-    res.json({ message: "hello world" }); 
-}); */
-
 app.use('/api', hotelRoutes);
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
-
 
 
 const port = 5000;

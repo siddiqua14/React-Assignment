@@ -1,6 +1,6 @@
 {
-  "title": "Updated Hotel Title",
-  "description": "Updated description",
+  "title": "Radisson Blue",
+  "description": "A modern hotel in the heart of the city",
   "guestCount": 6,
   "bedroomCount": 3,
   "bathroomCount": 2,
@@ -15,10 +15,10 @@
   "longitude": -75.1234,
   "rooms": [
     {
-      "hotelSlug": "updated-hotel",
+      "hotelSlug": "radisson-blue",
       "roomSlug": "room1",
       "roomImage": [],
-      "roomTitle": "Updated Room 1",
+      "roomTitle": "Room 1",
       "bedroomCount": 1,
       "roomImages": [
         "http://localhost:5000/uploads/rooms/1731426519587-room1-room.jpeg",
@@ -28,7 +28,7 @@
     }
   ],
   "id": "1731426519587",
-  "slug": "updated-hotel-title",
+  "slug": "radisson-blue",
   "images": [
     "http://localhost:5000/uploads/hotels/1731426519587-1731931874864.jpg",
     "http://localhost:5000/uploads/hotels/1731426519587-1731931874863.jpeg",
